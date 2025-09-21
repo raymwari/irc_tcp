@@ -23,14 +23,10 @@ func r_callback(ev_str string, con net.Conn) {
 	case "/join":
 		if guest != nick {
 			cmd := fmt.Sprintf("PRIVMSG #%s :Hello %s, thanks for joining. Kindly check your inbox for more information!\r\n",
-				chnl,
-				guest)
+				chnl, guest)
 			fmt.Fprintf(con, "%s", cmd)
 			cmd = fmt.Sprintf("PRIVMSG %s :Hello %s, issue command: \x02whois %s\x02 then leave a message if active, or leave a message at \x02%s!\x02 Thanks again...\r\n",
-				guest,
-				guest,
-				chnl,
-				email)
+				guest, guest, chnl, email)
 			fmt.Fprintf(con, "%s", cmd)
 		}
 	case "/message":
@@ -83,3 +79,4 @@ func main() {
 		}
 	})
 }
+
